@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>How to Master C++</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/league.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/github.css" id="highlight-theme">
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!--
+        <section id="Title-Slide"
+                 data-state="hideControls"
+                 data-menu-title="Title Slide"
+                 data-background-image="media/title-slide.png"
+                 data-background-size="contain">
+        </section>
+        -->
+
+        <section>
+          <h2>How to Master C++</h2>
+          <p>
+          <h3>(Five Mindsets for C++)</h3>
+            <small>
+              Jim (James) Pascoe<br>
+              <a href="http://www.james-pascoe.com">http://www.james-pascoe.com</a><br>
+              <a href="mailto:james@james-pascoe.com">james@james-pascoe.com</a><p>
+
+              <a href="http://jamespascoe.github.io/accu2023-mindset">http://jamespascoe.github.io/accu2023-mindset</a><br>
+            </small>
+          <aside class="notes">
+          Hello, good afternoon and welcome - my name is Jim Pascoe and today I am going to talk to you about 'How to master
+          C++'. The sub-title to this talk is 'Five Mindsets for C++' and we will see why in just a moment.
+          <p>
+          Here is my email address and URL (if you want to find out a bit about what I've done in the past) and also, this
+          is the link to the online talk, so you can follow along from the comfort of your own browser if you prefer. So,
+          you can use the hamburger icon to skip between the slides and select a light theme if you prefer.
+          </aside>
+        </section>
+
+        <section>
+          <h2 style="color:yellow">Why this Talk?</h2>
+          <ul>
+            <span class="fragment"><li>Content ...</li></span>
+          </ul>
+          <aside class="notes">
+            So why this talk?
+
+           </aside>
+        </section>
+
+
+        <section>
+          <h2>Questions?</h2>
+          <p><p>
+          <a href="http://www.james-pascoe.com">http://www.james-pascoe.com</a><br>
+          <a href="mailto:james@james-pascoe.com">james@james-pascoe.com</a><p>
+
+          <a href="http://jamespascoe.github.io/accu2023-mindset">http://jamespascoe.github.io/accu2023-mindset</a><br>
+        </section>
+
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/menu/menu.js"></script>
+    <script src="plugin/chart/Chart.min.js"></script>
+    <script src="plugin/chart/plugin.js"></script>
+    <script src="plugin/animated/revealjs-animated.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        controls: true,
+        totalTime: 1200,
+        hideInactiveCursor: true,
+        hideCursorTime: 2000,
+        hideAddressBar: true,
+        preloadIframes: true,
+        progress: false,
+        touch: true,
+        pdfMaxPagesPerSlide: 1,
+        keyboard: {
+          67: () => { /* Keycode for the letter 'c' i.e. 'controls' */
+            var currentSlide = Reveal.getCurrentSlide();
+            var currentVideo = currentSlide.getElementsByTagName('video')[0];
+            if (currentVideo) {
+              /* Toggle video controls on/off */
+              currentVideo.controls = !currentVideo.controls
+            }
+          },
+          32: () => { /* Keycode for spacebar */
+            var currentSlide = Reveal.getCurrentSlide();
+            var currentVideo = currentSlide.getElementsByTagName('video')[0];
+            if (currentVideo) {
+              /* Pause/resume video when the spacebar is pressed */
+              if (currentVideo.paused == true) currentVideo.play();
+              else currentVideo.pause();
+            }
+            else {
+              /* Advance to next slide if no video (default Reveal behaviour) */
+              Reveal.next();
+            }
+          }
+        },
+        chart: {
+          defaults: {
+            global: {
+              title: { fontColor: "#FFF" },
+              legend: {
+                position: "bottom",
+                labels: { fontColor: "#FFF" },
+              },
+              tooltips: {
+                labels: { fontColor: "#FFF" },
+              },
+            },
+            scale: {
+              scaleLabel: { fontColor: "#FFF" },
+              gridLines: { color: "#FFF", zeroLineColor: "#FFF" },
+              ticks: { fontColor: "#FFF" },
+            }
+          },
+          bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)", "rgba(255, 159, 64, .8)","rgba(255, 205, 86, .8)", "rgba(153, 102, 255, .8)" ]},
+        },
+        menu: {
+          themes: true,
+          delayInit: true
+        },
+        pdfSeparateFragments: false,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealChart ]
+      });
+
+      Reveal.addEventListener('hideControls', function() {
+        Reveal.configure({controls: false});
+      }, false );
+
+      Reveal.addEventListener('slidechanged', function() {
+        /* Ensure that the Reveal controls and Menu are available on
+         * all slides other than the 'Title-Slide'.
+         */
+        slide_id = Reveal.getCurrentSlide().getAttribute("id");
+
+        if (slide_id !== "Title-Slide") {
+          config = Reveal.getConfig();
+          if (config["controls"] !== true) {
+            Reveal.configure({controls: true});
+          }
+
+          menu = Reveal.getPlugin("menu");
+          if (!menu.isMenuInitialised()) {
+            menu.initialiseMenu();
+          }
+        }
+      }, false );
+   </script>
+  </body>
+</html>
