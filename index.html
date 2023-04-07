@@ -42,7 +42,7 @@
             </small>
           <aside class="notes">
           Hello, good afternoon and welcome - my name is Jim Pascoe and today I am going to talk to you about 'How to master
-          C++'. The sub-title to this talk is 'Five Mindsets for C++' and we will see why in just a moment.
+          C++'. The sub-title to this talk is 'The Many Mindsets for C++' and we will see why in just a moment.
           <p>
           Here is my email address and URL (if you want to find out a bit about what I've done in the past) and also, this
           is the link to the online talk, so you can follow along from the comfort of your own browser if you prefer. So,
@@ -51,17 +51,35 @@
         </section>
 
         <section>
-          <h2 style="color:yellow">What is this talk about?</h2>
+          <h2 class="r-fit-text">MINDSET</h2>
           <aside class="notes">
-            So why this talk?
-           </aside>
+          </aside>
+        </section>
+
+        <section data-menu-title="Wordcloud Video"
+                 data-state="hideControls",
+                 data-background-video="media/wordcloud.mp4"
+                 id="video">
         </section>
 
         <section>
-          <h2 class="r-fit-text">MINDSET</h2>
-          <aside class="notes">
-            So why this talk?
-           </aside>
+          <h2 style="color:yellow">Mindset</h2>
+            <ul>
+              <span class="fragment"><li><i style="font-style: italic !important">noun.</i> a way of thinking</li></span>
+              <span class="fragment"><li>C++ has lots of mindsets:</li></span>
+                <ul>
+                  <span class="fragment"><li><ul>Imperative</ul></li></span>
+                  <span class="fragment"><li><ul>Object-Oriented</ul></li></span>
+                  <span class="fragment"><li><ul>Concurrent</ul></li></span>
+                  <span class="fragment"><li><ul>Functional</ul></li></span>
+                  <span class="fragment"><li><ul>Compile-time</ul></li></span>
+                  <span class="fragment"><li><ul>...</ul></li></span>
+                </ul>
+              <ul>
+
+              </ul>
+              <span class="fragment"><li>Blending these together leads to mastery</li></span>
+            </ul>
         </section>
 
         <section>
@@ -105,7 +123,7 @@
         keyboard: {
           67: () => { /* Keycode for the letter 'c' i.e. 'controls' */
             var currentSlide = Reveal.getCurrentSlide();
-            var currentVideo = currentSlide.getElementsByTagName('video')[0];
+            var currentVideo = currentSlide.slideBackgroundContentElement.getElementsByTagName("video")[0];
             if (currentVideo) {
               /* Toggle video controls on/off */
               currentVideo.controls = !currentVideo.controls
@@ -113,7 +131,7 @@
           },
           32: () => { /* Keycode for spacebar */
             var currentSlide = Reveal.getCurrentSlide();
-            var currentVideo = currentSlide.getElementsByTagName('video')[0];
+            var currentVideo = currentSlide.slideBackgroundContentElement.getElementsByTagName("video")[0];
             if (currentVideo) {
               /* Pause/resume video when the spacebar is pressed */
               if (currentVideo.paused == true) currentVideo.play();
@@ -156,6 +174,10 @@
 
       Reveal.addEventListener('hideControls', function() {
         Reveal.configure({controls: false});
+        menu_button = document.getElementsByClassName("slide-menu-button")[0];
+        if (menu_button) {
+          menu_button.style.display = 'none';
+        }
       }, false );
 
       Reveal.addEventListener('slidechanged', function() {
@@ -164,7 +186,7 @@
          */
         slide_id = Reveal.getCurrentSlide().getAttribute("id");
 
-        if (slide_id !== "Title-Slide") {
+        if (slide_id !== "Title-Slide" && slide_id !== "video") {
           config = Reveal.getConfig();
           if (config["controls"] !== true) {
             Reveal.configure({controls: true});
@@ -173,6 +195,10 @@
           menu = Reveal.getPlugin("menu");
           if (!menu.isMenuInitialised()) {
             menu.initialiseMenu();
+          }
+          menu_button = document.getElementsByClassName("slide-menu-button")[0];
+          if (menu_button) {
+            menu_button.style.display = '';
           }
         }
       }, false );
