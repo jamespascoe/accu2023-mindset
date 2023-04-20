@@ -97,7 +97,7 @@
             <span class="fragment"><li>Lots of advantages:</li></span>
             <span class="fragment"><ul>... easy to read, learn and switch</ul></span>
             <span class="fragment"><li>Focus on the basics (and continually reinforce them)</li></span>
-            <span class="fragment"><ul><li><span style="color:yellow">Ref:</span> <a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines">C++ Core Guidelines</a>, <a href="https://www.amazon.co.uk/Tour-C-Bjarne-Stroustrup/dp/0136816487">A Tour of C++ (3rd ed.)</a></span></li></ul>
+            <span class="fragment"><ul><li><span style="color:yellow">Refs:</span> <a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines">C++ Core Guidelines</a>, <a href="https://www.amazon.co.uk/Tour-C-Bjarne-Stroustrup/dp/0136816487">A Tour of C++ (3rd ed.)</a></span></li></ul>
             <span class="fragment"><li>Understand the History</li></span>
             <span class="fragment"><ul><li><span style="color:yellow">Ref:</span> <a href="https://www.stroustrup.com/hopl20main-p5-p-bfc9cd4--final.pdf">Thriving in a Crowded and Changing World</a></span></li></ul>
             <span class="fragment"><li>Optimise code for readability</li></span>
@@ -119,26 +119,28 @@
           </aside>
         </section>
 
+        <!-- range example -->
+
         <section>
           <h2>Performance Mindset</h2>
           <ul>
-            <span class="fragment"><li>Measure performance from the outset</li></span>
-            <ul>
-              <span class="fragment"><li>Hard to retrofit</li></span>
-              <span class="fragment"><li>... (same goes for concurrency and security)</li></span>
-            </ul>
-            <span class="fragment"><li>Optimisation Strategy:</li></span>
+            <span class="fragment"><li><span style="color:yellow">Efficiency:</span> do minimal work</li></span>
+            <span class="fragment"><li><span style="color:yellow">Performance:</span> do the work</span><span class="fragment"> fast</li></span>
+            <span class="fragment"><li>Improving Performance:</li></span>
             <ol>
-              <span class="fragment"><li>Maths/algorithms/data structures</li>
               <span class="fragment"><li>Memory hierarchy (D$/I$ misses)</li>
               <span class="fragment"><li>Branch prediction/mis-predictions</li>
               <span class="fragment"><li>Pipeline optimisations</li>
             </ol>
+            <span class="fragment"><li>Measure performance from the outset</li></span>
             <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.agner.org/optimize/#manuals">Agner Fog's Optimisation Manuals</a></span>
           </ul>
           <aside class="notes">
+          Hard to retrofit ... (same goes for concurrency and security).
           </aside>
         </section>
+
+        <!-- import concurrency text -->
 
         <section>
           <h2>Concurrency Mindset</h2>
@@ -155,14 +157,19 @@
           </aside>
         </section>
 
+        <!-- switching mindset example example -->
+
         <section>
-          <h2>Conclusions</h2>
+          <h2>Mastering C++</h2>
           <ul>
-            <span class="fragment"><li>C++ consists of many mindsets</li></span>
-            <span class="fragment"><ul><li>imperative, concurrent, functional ...</li></ul></span>
-            <span class="fragment"><li>Study each one in isolation</li></span>
-            <span class="fragment"><li>Recognise when to change mindset</li></span>
-            <span class="fragment" style="color:yellow"><li>Blending them together leads to mastery</li></span>
+            <span class="fragment"><li>C++ has lots of mindsets:</li></span>
+            <span class="fragment"><li><ul><li>... testing, debugging, hardware</li></ul></li></span>
+            <span class="fragment"><li>Think about them individually:</li></span>
+            <ol>
+              <span class="fragment"><li>What are the key idioms and pitfalls?</li></span>
+              <span class="fragment"><li>Recognise transitions between mindsets</li></span>
+            </ol>
+            <span class="fragment" style="color:yellow"><li>Blend the ideas together to master C++</li></span>
           </ul>
           <aside class="notes">
           </aside>
@@ -174,7 +181,7 @@
           <a href="http://www.james-pascoe.com">http://www.james-pascoe.com</a><br>
           <a href="mailto:james@james-pascoe.com">james@james-pascoe.com</a><p>
 
-          <a href="http://jamespascoe.github.io/accu2023">http://jamespascoe.github.io/accu2023-mindset</a><br>
+          <a href="http://jamespascoe.github.io/accu2023-mindset">http://jamespascoe.github.io/accu2023-mindset</a><br>
           <p>
           <font style="color:yellow">ACCU Bristol and Bath Meetup Coordinator</font>
         </section>
@@ -182,6 +189,75 @@
         </section>
       </div>
     </div>
+
+<!--
+
+efficiency - how much work you need to do
+performance - how fast you do it
+front-end stalls (getting instructions in), back-end stalls (getting data in) 
+
+The Imperative Mindset
+
+	1.	Telling the computer what to do (step-by-step)
+	2.	Direct Mapping to assembly language (which maps to instructions)
+	3.	Why its relatively straightforward to transition between imperative languages (e.g. Java - different syntax, different libraries, but same mindset).
+
+The Object-Oriented Mindset (User Defined Types)
+
+	1.	What is a type? Why do we have user-defined types? To build concepts that are specific to a problem domain into the language.
+	2.	What should you be thinking:
+	1.	Class design (one definition rule, explicit constructors, noexcept)  
+
+The Functional Mindset
+
+	1.	Much more about state transformation
+	2.	Pipe syntax with ranges
+	3.	(See Functional Programming in C++)
+	4.	Victor’s book
+
+The Performance Mindset
+
+Optimisation order:
+	1.	Algorithmic optimisations esp. maths (including data structures)
+	2.	Memory hierarchy (D$/I$ misses - program is going off-chip for memory accesses, then chances are its sub-optimal)
+	3.	Branch mis-predictions (use of likely / unlikely)
+	4.	Pipeline optimisations
+	5.	Agner Fog?
+
+The Concurrency Mindset
+
+	1.	C++ makes it easy to introduce concurrency primitives (e.g. std::jthread - joining thread, coroutines - useful for accessing latency windows in a single thread, mutexs - protect critical resources, ).
+	2.	Making the transition from a single-threaded to a multi-threaded program is a big step.
+	3.	Design concurrency (pencil and paper, message sequence charts)
+	1.	Aim to eliminate whole classes of issues (e.g. A cannot race with B because …) rather than reacting to specific instances
+	4.	Antony Williams’ book
+
+The Compile Time Mindset
+
+The Testing Mindset
+
+The Debugging Mindset
+
+	1.	Debugging starts when you design the code
+	2.	Proactive design vs. Reacting to bugs in the field (train example)
+	3.	Obvious classes of bugs:
+	1.	Logic errors - logging
+	2.	Concurrency issues - design, thread id’s, good soak testing
+	3.	Performance problems:
+	1.	Define KPIs (driven by business goals) and collect telemetry to support their calculation 
+
+Mastering C++
+
+	1.	Lots of others: hardware (FPGAs), algorithmic, low-latency …
+	2.	Study them individually:
+	1.	What are the salient techniques for each mindset?
+	2.	How do I recognise the transition from one to the next?
+	3.	Recognise them individually and switch your thinking on-the-fly
+	4.	Blend them together to master C++.
+
+
+-->
+
 
     <script src="dist/reveal.js"></script>
     <script src="plugin/notes/notes.js"></script>
