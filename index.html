@@ -29,6 +29,8 @@
 
         <section>
           <h2>How to Master C++</h2>
+            <p>
+            <h4>(Practical Tips for Improving Your C++ Knowledge)</h4>
             <small>
               Jim (James) Pascoe<br>
               <a href="http://www.james-pascoe.com">http://www.james-pascoe.com</a><br>
@@ -51,11 +53,11 @@
         <section>
           <h2 style="color:yellow">Why This Talk?</h2>
           <ul>
-            <span class="fragment"><li>Learning C++ is daunting</li></span>
-            <span class="fragment"><li>Big complex language</li></span>
+            <span class="fragment"><li>Learning C++ is fun</span><span class="fragment"> but challenging</li></span>
+            <span class="fragment"><li>Complex language</li></span>
             <span class="fragment"><li>Lots of styles, paradigmns and idioms</li></span>
             <span class="fragment"><li>Fun and rewarding if approached correctly</li></span>
-            <span class="fragment" style="color:yellow"><li>However, no single C++ mindset ...</li></span>
+            <span class="fragment" style="color:yellow"><li>Goal: share insights from my learning</li></span>
           </ul>
           <aside class="notes">
           </aside>
@@ -65,20 +67,22 @@
                  data-state="hideControls",
                  data-background-video="media/wordcloud.mp4"
                  id="video">
+          <aside class="notes">
+          </aside>
         </section>
 
         <section>
           <h2 style="color:yellow">Mindset</h2>
             <ul>
               <span class="fragment"><li><i style="font-style: italic !important">noun.</i> a way of thinking</li></span>
-              <span class="fragment"><li>C++ has lots of styles</span><span class="fragment"> requiring different mindsets:</li></span>
+              <span class="fragment"><li>C++ has lots of facets</span><span class="fragment"> requiring different mindsets:</li></span>
                 <ul>
                   <span class="fragment"><li>Imperative</li></span>
                   <span class="fragment"><li>Functional</li></span>
+                  <span class="fragment"><li>Performance</li></span>
                   <span class="fragment"><li>Concurrent</li></span>
                   <span class="fragment"><li>Object-Oriented</li></span>
                   <span class="fragment"><li>Generic</li></span>
-                  <span class="fragment"><li>Compile-time</li></span>
                 </ul>
               <span class="fragment"><li>Focus on each.</span><span class="fragment"> Blend mindsets to master C++.</li></span>
             </ul>
@@ -116,7 +120,28 @@
         </section>
 
         <section>
-          <h2>Concurrent Mindset</h2>
+          <h2>Performance Mindset</h2>
+          <ul>
+            <span class="fragment"><li>Measure performance from the outset</li></span>
+            <ul>
+              <span class="fragment"><li>Hard to retrofit</li></span>
+              <span class="fragment"><li>... (same goes for concurrency and security)</li></span>
+            </ul>
+            <span class="fragment"><li>Optimisation Strategy:</li></span>
+            <ol>
+              <span class="fragment"><li>Maths/algorithms/data structures</li>
+              <span class="fragment"><li>Memory hierarchy (D$/I$ misses)</li>
+              <span class="fragment"><li>Branch prediction/mis-predictions</li>
+              <span class="fragment"><li>Pipeline optimisations</li>
+            </ol>
+            <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.agner.org/optimize/#manuals">Agner Fog's Optimisation Manuals</a></span>
+          </ul>
+          <aside class="notes">
+          </aside>
+        </section>
+
+        <section>
+          <h2>Concurrency Mindset</h2>
           <ul>
             <span class="fragment"><li>Multiple work items 'in progress' at the same time</li></span>
             <span class="fragment"><li>Parallelism: items are processed at the same instant</li></span>
