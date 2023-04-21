@@ -42,7 +42,7 @@
             </small>
           <aside class="notes">
           Hello, good afternoon and welcome - my name is Jim Pascoe and today I am going to talk to you about 'How to master
-          C++'. The sub-title to this talk is 'The Many Mindsets for C++' and we will see why in just a moment.
+          C++'. The sub-title to this talk is 'Practical Tips for Improving Your C++ Knowledge' and we will see why in just a moment.
           <p>
           Here is my email address and URL (if you want to find out a bit about what I've done in the past) and also, this
           is the link to the online talk, so you can follow along from the comfort of your own browser if you prefer. So,
@@ -56,7 +56,7 @@
             <span class="fragment"><li>Learning C++ is fun</span><span class="fragment"> but challenging</li></span>
             <span class="fragment"><li>Complex language</li></span>
             <span class="fragment"><li>Continually evolving</li></span>
-            <span class="fragment"><li>Lots of styles, paradigmns and idioms</li></span>
+            <span class="fragment"><li>Lots of styles, paradigms and idioms</li></span>
             <span class="fragment"><li>Fun and rewarding</span><span class="fragment"> if approached correctly</li></span>
             <span class="fragment" style="color:yellow"><li>Goal: share insights from my learning</li></span>
           </ul>
@@ -135,9 +135,11 @@
           It is a declarative programming paradigm in which function definitions are trees of expressions that map values to other
           values, rather than a sequence of imperative statements which update the running state of the program.
           <p>
+          (after first three bullet points)
+          <p>
           What does declarative programming mean? For me, its about states and the transitions between states. So, we as programmer's
           have a desired outcome in mind e.g. I want to end up in state D. I am in state A. I don't know how to get to state D directly
-          from A. But, I do know how to get to state B and from there I can get to state C and from there to state D. Thatcis what you
+          from A. But, I do know how to get to state B and from there I can get to state C and from there to state D. That is what you
           are codifying into a functional program (which is very different from the imperative mindset where you are specifying each
           step to go from A to D.
           <p>
@@ -167,7 +169,7 @@ int main() {
         <section>
           <h2>Performance Mindset</h2>
           <ul>
-            <span class="fragment"><li><span style="color:yellow">Efficiency:</span> do minimal work</li></span>
+            <span class="fragment"><li><span style="color:yellow">Efficiency:</span> don't do unnecessary work</li></span>
             <span class="fragment"><li><span style="color:yellow">Performance:</span> do the work fast</li></span>
             <span class="fragment"><li>Improving Performance (rules-of-thumb):</li></span>
             <ol>
@@ -196,7 +198,7 @@ int main() {
             <span class="fragment"><li>Parallelism: items are processed at the same instant</li></span>
             <span class="fragment"><ul><li>... often implies extra hardware: cores, ILP etc.</li></ul></span>
             <span class="fragment"><li>C++ makes it easy to add concurrency</li></span>
-            <span class="fragment"><li>... std:jthread, std::async, lock guards etc.</li></span>
+            <span class="fragment"><li>... std:jthread, std::async etc.</li></span>
             <span class="fragment"><li>Design is important:</li></span>
             <span class="fragment"><ul><li>Eliminate bugs by design (e.g. race conditions)</li></ul></span>
             <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.amazon.co.uk/Concurrency-Action-2E-Anthony-Williams/dp/1617294691/">Concurrency in Action (Antony Williams)</a></span>
@@ -236,12 +238,17 @@ Connector::Connector(unsigned short port)
             <span class="fragment"><li>Proactive design vs. reacting to bugs in the field</li></span>
             <span class="fragment"><li>Predict (and prepare for) common bug categories</li></span>
             <ul>
-              <span class="fragment"><li>Concurrency issues: design, syncrhonised logging</li></span>
+              <span class="fragment"><li>Concurrency issues: design, synchronised logging</li></span>
               <span class="fragment"><li>Reliability issues: crash dump retrieval</li></span>
             </ul>
             <span class="fragment"><li>Debug performance problems in terms of KPIs</li></span>
           </ul>
           <aside class="notes">
+          So let's say that handover time is a key KPI.
+          <p>
+          Rather than say 'that handover time has gone up by 2ms', its better to say 'handover time
+          has gone up by 2ms, but we are still achieving our KPI performance goal of being within the mean
+          handover time 98% of the time'.
           </aside>
         </section>
 
@@ -258,6 +265,7 @@ Connector::Connector(unsigned short port)
             <span class="fragment" style="color:yellow"><li>Blend ideas together to master C++</li></span>
           </ul>
           <aside class="notes">
+          It takes a while, but the key is to enjoy it.
           </aside>
         </section>
 
@@ -275,75 +283,6 @@ Connector::Connector(unsigned short port)
         </section>
       </div>
     </div>
-
-<!--
-
-efficiency - how much work you need to do
-performance - how fast you do it
-front-end stalls (getting instructions in), back-end stalls (getting data in) 
-
-The Imperative Mindset
-
-	1.	Telling the computer what to do (step-by-step)
-	2.	Direct Mapping to assembly language (which maps to instructions)
-	3.	Why its relatively straightforward to transition between imperative languages (e.g. Java - different syntax, different libraries, but same mindset).
-
-The Object-Oriented Mindset (User Defined Types)
-
-	1.	What is a type? Why do we have user-defined types? To build concepts that are specific to a problem domain into the language.
-	2.	What should you be thinking:
-	1.	Class design (one definition rule, explicit constructors, noexcept)  
-
-The Functional Mindset
-
-	1.	Much more about state transformation
-	2.	Pipe syntax with ranges
-	3.	(See Functional Programming in C++)
-	4.	Victor’s book
-
-The Performance Mindset
-
-Optimisation order:
-	1.	Algorithmic optimisations esp. maths (including data structures)
-	2.	Memory hierarchy (D$/I$ misses - program is going off-chip for memory accesses, then chances are its sub-optimal)
-	3.	Branch mis-predictions (use of likely / unlikely)
-	4.	Pipeline optimisations
-	5.	Agner Fog?
-
-The Concurrency Mindset
-
-	1.	C++ makes it easy to introduce concurrency primitives (e.g. std::jthread - joining thread, coroutines - useful for accessing latency windows in a single thread, mutexs - protect critical resources, ).
-	2.	Making the transition from a single-threaded to a multi-threaded program is a big step.
-	3.	Design concurrency (pencil and paper, message sequence charts)
-	1.	Aim to eliminate whole classes of issues (e.g. A cannot race with B because …) rather than reacting to specific instances
-	4.	Antony Williams’ book
-
-The Compile Time Mindset
-
-The Testing Mindset
-
-The Debugging Mindset
-
-	1.	Debugging starts when you design the code
-	2.	Proactive design vs. Reacting to bugs in the field (train example)
-	3.	Obvious classes of bugs:
-	1.	Logic errors - logging
-	2.	Concurrency issues - design, thread id’s, good soak testing
-	3.	Performance problems:
-	1.	Define KPIs (driven by business goals) and collect telemetry to support their calculation 
-
-Mastering C++
-
-	1.	Lots of others: hardware (FPGAs), algorithmic, low-latency …
-	2.	Study them individually:
-	1.	What are the salient techniques for each mindset?
-	2.	How do I recognise the transition from one to the next?
-	3.	Recognise them individually and switch your thinking on-the-fly
-	4.	Blend them together to master C++.
-
-
--->
-
 
     <script src="dist/reveal.js"></script>
     <script src="plugin/notes/notes.js"></script>
