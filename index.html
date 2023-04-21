@@ -78,7 +78,7 @@
           <h2 style="color:yellow">Mindset</h2>
             <ul>
               <span class="fragment"><li><i style="font-style: italic !important">noun.</i> a way of thinking</li></span>
-              <span class="fragment"><li>C++ has lots of facets</span><span class="fragment"> requiring different mindsets:</li></span>
+              <span class="fragment"><li>C++ has lots of facets</span><span class="fragment">, requiring different mindsets:</li></span>
                 <ul>
                   <span class="fragment"><li>Imperative</li></span>
                   <span class="fragment"><li>Functional</li></span>
@@ -115,11 +115,39 @@
             <span class="fragment"><li>Evaluate expressions (rather than statements)</li></span>
             <span class="fragment"><li>Expressions consist of functions</li></span>
             <span class="fragment"><li><span style="color:yellow">Declarative:</span> the programmer states what needs to be done and the language determines how</li></span>
-            <span class="fragment"><li>std::ranges library has some good examples</li></span>
+            <span class="fragment"><li>The std::ranges library is very functional</li></span>
             <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.manning.com/books/functional-programming-in-c-plus-plus">Functional Programming in C++ (Ivan &Ccaron;uki&cacute;)</a></span>
           </ul>
           <aside class="notes">
-          It is a declarative programming paradigm in which function definitions are trees of expressions that map values to other values, rather than a sequence of imperative statements which update the running state of the program.
+          Who here, when they first encountered functional programming tried to implement for loops, if-then-else and while loops?
+          <p>
+          It is a declarative programming paradigm in which function definitions are trees of expressions that map values to other
+          values, rather than a sequence of imperative statements which update the running state of the program.
+          <p>
+          What does declarative programming mean? For me, its about states and the transitions between states. So, you declare what
+          the desired outcome is e.g. I wish to end up in state D. I am in state A. I don't know how to get to state D directly from
+          A. But, I do know how to get to state B and from there to state C and from there to state D. In my mind, that is what you
+          are codifying into a functional program. Look at the range library - its very functional.
+
+          </aside>
+        </section>
+
+        <section>
+          <h2>Functional Example</h2>
+            <pre><code class="c++" style="width:105%" data-trim data-line-numbers="|7|">
+#include &ltiostream&gt
+#include &ltvector&gt
+#include &ltranges&gt
+
+int main() {
+  std::vector vec{1, 2, 3, 4, 5, 6};
+  auto v = vec | std::views::reverse | std::views::drop(2);
+
+  std::cout &lt&lt *v.begin() &lt&lt '\n';
+}
+          </code></pre>
+          <span class="fragment">Credit to: <a href="https://hannes.hauswedell.net/post/2019/11/30/range_intro/">Hannes Hauswedell</a> for the example</span>
+          <aside class="notes">
           </aside>
         </section>
 
@@ -127,7 +155,7 @@
           <h2>Performance Mindset</h2>
           <ul>
             <span class="fragment"><li><span style="color:yellow">Efficiency:</span> do minimal work</li></span>
-            <span class="fragment"><li><span style="color:yellow">Performance:</span> do the work</span><span class="fragment"> fast</li></span>
+            <span class="fragment"><li><span style="color:yellow">Performance:</span> do the work fast</li></span>
             <span class="fragment"><li>Improving Performance:</li></span>
             <ol>
               <span class="fragment"><li>Memory hierarchy (D$/I$ misses)</li>
@@ -148,9 +176,10 @@
             <span class="fragment"><li>Multiple work items 'in progress' at the same time</li></span>
             <span class="fragment"><li>Parallelism: items are processed at the same instant</li></span>
             <span class="fragment"><ul><li>... often implies extra hardware: cores, ILP etc.</li></ul></span>
-            <span class="fragment"><li>Concurrency design is important</li></span>
+            <span class="fragment"><li>C++ makes it easy to add concurrency</li></span>
+            <span class="fragment"><li>... std:jthread, lock guards, coroutines etc.</li></span>
+            <span class="fragment"><li>Design is important:</li></span>
             <span class="fragment"><ul><li>Eliminate bugs by design (e.g. race conditions)</li></ul></span>
-            <span class="fragment"><li><span style="color:yellow">Be careful when switching mindset</span></li></span>
             <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.amazon.co.uk/Concurrency-Action-2E-Anthony-Williams/dp/1617294691/">Concurrency in Action (Antony Williams)</a></span>
           </ul>
           <aside class="notes">
@@ -158,7 +187,7 @@
         </section>
 
         <section>
-          <h2>Which Mindset is This?</h2>
+          <h2>Which Mindset?</h2>
             <pre><code class="c++" style="width:105%" data-trim data-line-numbers="|13|">
 //
 // lua_fiber_connector_action.cpp
