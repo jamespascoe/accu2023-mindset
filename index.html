@@ -27,9 +27,6 @@
                  data-background-size="contain">
         </section>
 
-        <!-- range example -->
-        <!-- update concurrency slide -->
-
         <section>
           <h2>How to Master C++</h2>
             <p>
@@ -58,11 +55,18 @@
           <ul>
             <span class="fragment"><li>Learning C++ is fun</span><span class="fragment"> but challenging</li></span>
             <span class="fragment"><li>Complex language</li></span>
+            <span class="fragment"><li>Continually evolving</li></span>
             <span class="fragment"><li>Lots of styles, paradigmns and idioms</li></span>
-            <span class="fragment"><li>Fun and rewarding if approached correctly</li></span>
+            <span class="fragment"><li>Fun and rewarding</span><span class="fragment"> if approached correctly</li></span>
             <span class="fragment" style="color:yellow"><li>Goal: share insights from my learning</li></span>
           </ul>
           <aside class="notes">
+          Ok, so we've got 20 minutes. What I would like to do is to present a mental framework that I use to
+          think about C++. I find that this helps me to organise my C++ learning. So, if you are new or fairly
+          new to C++, then this should help you. If you are an expert, then hopefully there will be one or two
+          nuggets in here that should also be useful.
+          <p>
+          Learning about C++ can feel a bit like this <click>.
           </aside>
         </section>
 
@@ -71,6 +75,9 @@
                  data-background-video="media/wordcloud.mp4"
                  id="video">
           <aside class="notes">
+          Lots of overlapping ideas, views, opinions, history. But it's a bit more than that. The issue is that its not
+          just the quantity of information. When you've been doing C++ for a while, you realise that you need to think
+          differently depending on what you are doing. Let's explore that a bit. <click>
           </aside>
         </section>
 
@@ -84,12 +91,16 @@
                   <span class="fragment"><li>Functional</li></span>
                   <span class="fragment"><li>Performance</li></span>
                   <span class="fragment"><li>Concurrent</li></span>
-                  <span class="fragment"><li>Object-Oriented</li></span>
-                  <span class="fragment"><li>Generic</li></span>
+                  <span class="fragment"><li>Testing</li></span>
+                  <span class="fragment"><li>Object-Oriented ...</li></span>
                 </ul>
               <span class="fragment"><li>Focus on each.</span><span class="fragment"> Blend mindsets to master C++.</li></span>
             </ul>
             <aside class="notes">
+            What I am aiming to do is to develop a working knowledge of the key considerations and pitfalls for each
+            mindset. So, I've constantly got in mind the key things that I should be thinking about when I am working
+            in a particular mindset. The other point to be concious of is when you swap mindset, because that can be
+            subtle and we will get into that.
             </aside>
         </section>
 
@@ -124,11 +135,13 @@
           It is a declarative programming paradigm in which function definitions are trees of expressions that map values to other
           values, rather than a sequence of imperative statements which update the running state of the program.
           <p>
-          What does declarative programming mean? For me, its about states and the transitions between states. So, you declare what
-          the desired outcome is e.g. I wish to end up in state D. I am in state A. I don't know how to get to state D directly from
-          A. But, I do know how to get to state B and from there to state C and from there to state D. In my mind, that is what you
-          are codifying into a functional program. Look at the range library - its very functional.
-
+          What does declarative programming mean? For me, its about states and the transitions between states. So, we as programmer's
+          have a desired outcome in mind e.g. I want to end up in state D. I am in state A. I don't know how to get to state D directly
+          from A. But, I do know how to get to state B and from there I can get to state C and from there to state D. Thatcis what you
+          are codifying into a functional program (which is very different from the imperative mindset where you are specifying each
+          step to go from A to D.
+          <p>
+          A good example of this is the range library - its very functional.<click>
           </aside>
         </section>
 
@@ -156,28 +169,34 @@ int main() {
           <ul>
             <span class="fragment"><li><span style="color:yellow">Efficiency:</span> do minimal work</li></span>
             <span class="fragment"><li><span style="color:yellow">Performance:</span> do the work fast</li></span>
-            <span class="fragment"><li>Improving Performance:</li></span>
+            <span class="fragment"><li>Improving Performance (rules-of-thumb):</li></span>
             <ol>
               <span class="fragment"><li>Memory hierarchy (D$/I$ misses)</li>
               <span class="fragment"><li>Branch prediction/mis-predictions</li>
               <span class="fragment"><li>Pipeline optimisations</li>
             </ol>
+            <span class="fragment"><li>Define 'performance' using KPIs and stats</li></span>
             <span class="fragment"><li>Measure performance from the outset</li></span>
             <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.agner.org/optimize/#manuals">Agner Fog's Optimisation Manuals</a></span>
           </ul>
           <aside class="notes">
-          Hard to retrofit ... (same goes for concurrency and security).
+          Efficiency - don't do unnecessary work. When I am writing code, I don't consider this to be optimisation,
+          as such. Moreover, this is where all that practice with algorithms and data structures comes in handy.
+
+          <Talk through remainder of slide>
+
+          The key thing about performance is that its hard to retrofit (same goes for concurrency and security).
           </aside>
         </section>
 
         <section>
           <h2>Concurrency Mindset</h2>
           <ul>
-            <span class="fragment"><li>Multiple work items 'in progress' at the same time</li></span>
+            <span class="fragment"><li>Concurrency: items 'in progress' at the same time</li></span>
             <span class="fragment"><li>Parallelism: items are processed at the same instant</li></span>
             <span class="fragment"><ul><li>... often implies extra hardware: cores, ILP etc.</li></ul></span>
             <span class="fragment"><li>C++ makes it easy to add concurrency</li></span>
-            <span class="fragment"><li>... std:jthread, lock guards, coroutines etc.</li></span>
+            <span class="fragment"><li>... std:jthread, std::async, lock guards etc.</li></span>
             <span class="fragment"><li>Design is important:</li></span>
             <span class="fragment"><ul><li>Eliminate bugs by design (e.g. race conditions)</li></ul></span>
             <span class="fragment"><li><span style="color:yellow">Ref:</span> <a href="https://www.amazon.co.uk/Concurrency-Action-2E-Anthony-Williams/dp/1617294691/">Concurrency in Action (Antony Williams)</a></span>
@@ -206,6 +225,7 @@ Connector::Connector(unsigned short port)
   log_trace("Connector action starting");
           </code></pre>
           <aside class="notes">
+          Quick question: which mindset is this code written in?
           </aside>
         </section>
 
@@ -214,12 +234,12 @@ Connector::Connector(unsigned short port)
           <ul>
             <span class="fragment"><li>Debugging starts when you design the code</li></span>
             <span class="fragment"><li>Proactive design vs. reacting to bugs in the field</li></span>
-            <span class="fragment"><li>Predict (and prepare for) common bug categories:</li></span>
+            <span class="fragment"><li>Predict (and prepare for) common bug categories</li></span>
             <ul>
               <span class="fragment"><li>Concurrency issues: design, syncrhonised logging</li></span>
-              <span class="fragment"><li>Reliability issues: crash kernel</li></span>
+              <span class="fragment"><li>Reliability issues: crash dump retrieval</li></span>
             </ul>
-            <span class="fragment"><li>Define performance goals in terms of KPIs</li></span>
+            <span class="fragment"><li>Debug performance problems in terms of KPIs</li></span>
           </ul>
           <aside class="notes">
           </aside>
